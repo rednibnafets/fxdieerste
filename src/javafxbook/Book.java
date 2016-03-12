@@ -10,10 +10,14 @@ package javafxbook;
  * @author stefan
  */
 public class Book {
+
+    public static Book create(String t) {
+        return new Book(t);
+    }
     
     private String title;
     
-    public Book(String t){
+    private Book(String t){
         title = t ;
     }
 

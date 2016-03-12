@@ -39,7 +39,8 @@ public class JavaFXBook {
         emhildur.setTitle(Person.Title.MS) ;
         
         
-               
+        Book firstbook = Book.create("Ulysses") ;
+        System.out.println("Title of firstbook: " + firstbook.getTitle());
         
         
     }
