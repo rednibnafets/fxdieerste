@@ -30,8 +30,11 @@ public class JavaFXBook {
 //            }
 //        
 //        }; // ! 
-
+//
 // use a lambda expression 
+// the compiler infers that this expression defines the methor propertyChange()
+// - see documentation!
+//
         final PropertyChangeListener pcl = (PropertyChangeEvent event) -> {
                 System.out.println("Property " + event.getPropertyName()
                         + " changed for " + event.getSource() + "!") ;
