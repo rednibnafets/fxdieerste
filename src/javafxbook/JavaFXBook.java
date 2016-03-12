@@ -1,9 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package javafxbook;
+
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+//import java.util.HashSet;
+//import java.util.Set;
 
 /**
  *
@@ -17,11 +17,29 @@ public class JavaFXBook {
     public static void main(String[] args) {
         Person hamish = new Person("Hamish", "MacDuff", Person.Gender.MALE);
         Person emhildur = new Person("Emhildur", "Antonsdottir", Person.Gender.FEMALE);
+       
+        
+        // add a PropertyChangeListener
+        final PropertyChangeListener pcl = new PropertyChangeListener(){
+            @Override
+            public void propertyChange(PropertyChangeEvent event){
+                System.out.println("Property " + event.getPropertyName()
+                        + " changed for " + event.getSource() + "!") ;
+            }
+        
+        }; // ! 
+        
+        hamish.addPropertyChangeListener(pcl);
+        emhildur.addPropertyChangeListener(pcl);
         
         System.out.println(hamish);
         System.out.println(emhildur);
         
+        hamish.setTitle(Person.Title.MASTER);
+        emhildur.setTitle(Person.Title.MS) ;
         
+        
+               
         
         
     }
