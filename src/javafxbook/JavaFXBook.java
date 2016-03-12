@@ -2,9 +2,10 @@ package javafxbook;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-//import java.util.HashSet;
-//import java.util.Set;
-
+// PropertyChangeListener is an interface.
+// see
+// http://docs.oracle.com/javase/7/docs/api/java/beans/PropertyChangeListener.html
+//
 /**
  *
  * @author stefan
@@ -20,14 +21,22 @@ public class JavaFXBook {
        
         
         // add a PropertyChangeListener
-        final PropertyChangeListener pcl = new PropertyChangeListener(){
-            @Override
-            public void propertyChange(PropertyChangeEvent event){
+        // (!) ... anonymous inner class creation can be turned into a lambda expression
+//        final PropertyChangeListener pcl = new PropertyChangeListener(){
+//            @Override
+//            public void propertyChange(PropertyChangeEvent event){
+//                System.out.println("Property " + event.getPropertyName()
+//                        + " changed for " + event.getSource() + "!") ;
+//            }
+//        
+//        }; // ! 
+
+// use a lambda expression 
+        final PropertyChangeListener pcl = (PropertyChangeEvent event) -> {
                 System.out.println("Property " + event.getPropertyName()
                         + " changed for " + event.getSource() + "!") ;
-            }
-        
-        }; // ! 
+        };
+
         
         hamish.addPropertyChangeListener(pcl);
         emhildur.addPropertyChangeListener(pcl);
